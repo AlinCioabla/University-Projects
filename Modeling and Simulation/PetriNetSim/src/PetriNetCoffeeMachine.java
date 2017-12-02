@@ -6,7 +6,8 @@ public class PetriNetCoffeeMachine extends PetriNet
 {
 	public PetriNetCoffeeMachine()
 	{
-		super(Initialize());
+		super();
+		Initialize();
 	}
 	
 	public String GetCurrentState()
@@ -25,10 +26,8 @@ public class PetriNetCoffeeMachine extends PetriNet
 		return null;
 	}
 	
-	private static LinkedList<Transition> Initialize()
-	{
-		LinkedList<Transition> transitions = new LinkedList<Transition>();
-		
+	protected void Initialize()
+	{		
 		Location lZeroB = new Location("0b");
 		Location lCinciB = new Location("5b");
 		Location lZeceB = new Location("10b");
@@ -37,44 +36,44 @@ public class PetriNetCoffeeMachine extends PetriNet
 		
 		lZeroB.UpdateJetoane(1);
 		
-		transitions.add(new Transition("dep5b", new LinkedList<Arc>() {{ 
+		mTransitions.add(new Transition("dep5b", new LinkedList<Arc>() {{ 
 			add(new Arc(1, lZeroB, Direction.OUT)); 
 			add(new Arc(1, lCinciB, Direction.IN)); 
 			}}
 		));
 		
-		transitions.add(new Transition("dep10b", new LinkedList<Arc>() {{ 
+		mTransitions.add(new Transition("dep10b", new LinkedList<Arc>() {{ 
 			add(new Arc(1, lCinciB, Direction.OUT)); 
 			add(new Arc(1, lCincispeB, Direction.IN)); 
 			}}
 		));
 		
-		transitions.add(new Transition("dep10b", new LinkedList<Arc>() {{ 
+		mTransitions.add(new Transition("dep10b", new LinkedList<Arc>() {{ 
 			add(new Arc(1, lZeroB, Direction.OUT)); 
 			add(new Arc(1, lZeceB, Direction.IN)); 
 			}}
 		));
 		
-		transitions.add(new Transition("dep10b", new LinkedList<Arc>() {{ 
+		mTransitions.add(new Transition("dep10b", new LinkedList<Arc>() {{ 
 			add(new Arc(1, lZeceB, Direction.OUT)); 
 			add(new Arc(1, lDouazeciB, Direction.IN)); 
 			}}
 		));
 
 		
-		transitions.add(new Transition("dep5b", new LinkedList<Arc>() {{ 
+		mTransitions.add(new Transition("dep5b", new LinkedList<Arc>() {{ 
 			add(new Arc(1, lCinciB, Direction.OUT)); 
 			add(new Arc(1, lZeceB, Direction.IN)); 
 			}}
 		));
 
-		transitions.add(new Transition("dep5b", new LinkedList<Arc>() {{ 
+		mTransitions.add(new Transition("dep5b", new LinkedList<Arc>() {{ 
 			add(new Arc(1, lZeceB, Direction.OUT)); 
 			add(new Arc(1, lCincispeB, Direction.IN)); 
 			}}
 		));
 		
-		transitions.add(new Transition("dep5b", new LinkedList<Arc>() {{ 
+		mTransitions.add(new Transition("dep5b", new LinkedList<Arc>() {{ 
 			add(new Arc(1, lCincispeB, Direction.OUT)); 
 			add(new Arc(1, lDouazeciB, Direction.IN)); 
 			}}
@@ -83,27 +82,26 @@ public class PetriNetCoffeeMachine extends PetriNet
 		
 		
 		//-------- cumpara cafea de 15 cand ai 20
-		transitions.add(new Transition("iacafea15b", new LinkedList<Arc>() {{ 
+		mTransitions.add(new Transition("iacafea15b", new LinkedList<Arc>() {{ 
 			add(new Arc(1, lDouazeciB, Direction.OUT)); 
 			add(new Arc(1, lCinciB, Direction.IN)); 
 			}}
 		));
 		
 		
-		transitions.add(new Transition("iacafea15b", new LinkedList<Arc>() {{ 
+		mTransitions.add(new Transition("iacafea15b", new LinkedList<Arc>() {{ 
 			add(new Arc(1, lCincispeB, Direction.OUT)); 
 			add(new Arc(1, lZeroB, Direction.IN)); 
 			}}
 		));
 		
-		transitions.add(new Transition("iacafea20b", new LinkedList<Arc>() {{ 
+		mTransitions.add(new Transition("iacafea20b", new LinkedList<Arc>() {{ 
 			add(new Arc(1, lDouazeciB, Direction.OUT)); 
 			add(new Arc(1, lZeroB, Direction.IN)); 
 			}}
 		));
 		
 		
-		return transitions;
 	}
 	
 	
@@ -111,11 +109,11 @@ public class PetriNetCoffeeMachine extends PetriNet
 	public void Run()
 	{
 		System.out.println("Welcome to the Alin Coffee Machine! - PetriNet");
+		Scanner scanner = new Scanner(System.in);
 		int option;
 		do 
 		{
 			PrintMenu();
-			Scanner scanner = new Scanner(System.in);
 			option = scanner.nextInt();
 			
 			switch(option)

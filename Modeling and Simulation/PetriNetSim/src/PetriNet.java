@@ -2,9 +2,9 @@ import java.util.LinkedList;
 
 
 public class PetriNet {
-	public PetriNet(LinkedList<Transition> aTransitions)
+	public PetriNet()
 	{
-		mTransitions = aTransitions;
+		mTransitions = new LinkedList<Transition>();
 	}
 	
 	
