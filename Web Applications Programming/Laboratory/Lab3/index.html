@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/jquery.validate.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                    </li>
+                    <li>
+                        <div class="dropdowns">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Categorii
+                        </a>
+                            <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">A</a>
+                                <a class="dropdown-item" href="#">B</a>
+                                <a class="dropdown-item" href="#">C</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link">Contact</a>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+        <div class="row">
+            <div class="col-10">
+                <h3> Article 1</h3>
+                <article>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque augue libero, pharetra id sollicitudin a, varius et dui. Vestibulum ullamcorper ex at augue tincidunt dignissim. Nulla suscipit feugiat nibh, sed commodo urna cursus in. Proin efficitur
+                    semper sapien et hendrerit. Maecenas cursus lorem nec elit ornare, sed dapibus arcu suscipit. Quisque elementum massa nec sapien finibus, in pretium ante sodales. Mauris in lectus turpis. Mauris eros orci, venenatis sed nibh eget,
+                    mattis iaculis elit. Aliquam pellentesque lectus ut molestie tempor. Etiam luctus nec metus et commodo. Pellentesque mollis placerat augue non cursus. Aliquam faucibus commodo est ac finibus. Suspendisse efficitur sollicitudin est
+                    non facilisis. Nunc euismod elit ac ornare euismod. Phasellus efficitur venenatis magna placerat venenatis. Aliquam ante mauris, aliquet ac nibh ac, ultricies interdum tortor. Duis pharetra diam id nulla fringilla, vel dapibus risus
+                    rutrum. Mauris condimentum suscipit volutpat. In suscipit, nibh a eleifend pellentesque, tellus est tincidunt enim, a molestie mauris felis et diam. Proin eleifend vulputate augue ut laoreet. Duis efficitur condimentum tellus, eu volutpat
+                    nulla vehicula vitae. Vivamus ultrices odio ac lectus lacinia vestibulum. Nulla dui felis, finibus sit amet lectus vel, accumsan faucibus erat. Morbi ut accumsan ante, et feugiat nisl. Sed a tincidunt lacus. Donec dapibus leo in nulla
+                    molestie, id congue massa imperdiet. Curabitur et efficitur ante. Aenean pretium ante felis, id ullamcorper enim fringilla a. Sed et ultricies libero. Duis efficitur velit vitae lacus viverra, sed iaculis arcu sodales. Suspendisse
+                    porttitor placerat purus, non luctus sapien mollis sit amet. Donec a tincidunt nisl. Morbi sed enim id nibh sagittis aliquet. Donec porttitor vel lorem sit amet commodo. Vestibulum dignissim arcu in purus maximus, sed blandit risus
+                    eleifend. Nullam quis egestas nisl, at semper ante. Proin a scelerisque nulla. Donec eu mollis felis. Donec imperdiet nisi ut sem finibus pretium. Integer nec sem ac neque finibus porttitor non et tellus. Morbi euismod porta magna,
+                    quis laoreet purus volutpat sed. Ut varius libero quam, ac egestas arcu mollis nec. Donec nulla est, posuere ac nibh eget, dictum suscipit augue. Praesent ultrices semper sodales. Integer consequat porttitor ultrices. Sed vehicula
+                    augue felis, a feugiat odio imperdiet eget. Quisque vitae arcu ac quam lacinia venenatis non eu eros. Sed lobortis, risus id condimentum eleifend, lectus libero egestas dolor, quis luctus sem elit in metus. Proin at risus non diam
+                    vestibulum condimentum vitae sed ex. Quisque libero risus, malesuada id pharetra eu, posuere eget elit. Donec semper mauris tempus, convallis massa a, sagittis ante. Proin aliquam vel tellus id ornare. Fusce posuere malesuada quam
+                    et tempus.
+                </article>
+                <div id="nextArticle">
+
+                </div>
+                <button type="button" class="btn btn-primary" id="btnLoad">Incarca mai departe</button>
+                <script>
+                    $('#btnLoad').click(function() {
+                        $('#nextArticle').load("http://localhost/Lab3/articol2.html");
+                    });
+                </script>
+            </div>
+            <div class="col-2">
+                sidebar
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

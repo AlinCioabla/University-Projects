@@ -16,7 +16,6 @@ public class PostalAgency {
 		Queue<Client> queue1 = new LinkedList<Client>();
 		Queue<Client> queue2 = new LinkedList<Client>();
 		
-		
 		ArrayList<String> client1Op = new ArrayList<String>();
 		client1Op.add("PlataFactura");
 		client1Op.add("TrimitereColet");
@@ -26,10 +25,11 @@ public class PostalAgency {
 		
 		ArrayList<String> client3Op = new ArrayList<String>();
 		client3Op.add("TrimitereColet");
+		client3Op.add("PlataFactura");
 		
 		ArrayList<String> client4Op = new ArrayList<String>();
 		client4Op.add("PlataFactura");
-		client4Op.add("TrimitereColet");
+
 		
 		ArrayList<String> client5Op = new ArrayList<String>();
 		client4Op.add("PrimireColet");
@@ -119,7 +119,7 @@ public class PostalAgency {
 	{
 		int time = 0;
 		
-		for(int i = 0; i<booths.size();i++)
+		for(int i = 0; i < booths.size();i++)
 		{
 			int j = 0;
 			while(!booths.get(i).getClientQueue().isEmpty())
