@@ -5,7 +5,8 @@
  */
 package main;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -15,37 +16,44 @@ import java.util.logging.Logger;
  */
 public class Consumer implements Runnable {
 
-	private List<Integer> criticalZone;
-	// private Semaphore mutex;
+	private ArrayList<Integer> criticalZone;
+	private Semaphore semFull;
+	private Semaphore semFree;
 
-	Consumer(List<Integer> criticalZone /* , Semaphore mutex */) {
+	Consumer(ArrayList<Integer> criticalZone, Semaphore semFree, Semaphore semFull) {
 		this.criticalZone = criticalZone;
-		// this.mutex = mutex;
+		this.semFull = semFull;
+		this.semFree = semFree;
 	}
 
 	@Override
 	public void run() {
 		while (true) {
-			if (consume()) {
-				System.out.println("Consumed element");
-			} else {
-				System.out.println("Cannot consume - zone is empty. Skipping...");
-			}
-
+			int elementToConsume = 0;
 			try {
-				Thread.sleep(500);
-			} catch (InterruptedException ex) {
-				Logger.getLogger(Producer.class.getName()).log(Level.SEVERE, null, ex);
+				semFull.acquire();
+				elementToConsume = getElement();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			} finally {
+				semFree.release();
+				consume();
 			}
 		}
 	}
 
-	private synchronized boolean consume() {
+	private synchronized int getElement() {
+		int element = this.criticalZone.get(0);
+		this.criticalZone.remove(0);
+		return element;
+	}
 
-		if (!this.criticalZone.isEmpty()) {
-			this.criticalZone.remove(this.criticalZone.size() - 1);
-			return true;
+	private void consume() {
+		System.out.println("Consumed element");
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException ex) {
+			Logger.getLogger(Producer.class.getName()).log(Level.SEVERE, null, ex);
 		}
-		return false;
 	}
 }

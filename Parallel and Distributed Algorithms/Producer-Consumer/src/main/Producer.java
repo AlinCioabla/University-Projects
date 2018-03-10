@@ -5,9 +5,8 @@
  */
 package main;
 
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.ArrayList;
+import java.util.concurrent.Semaphore;
 
 /**
  *
@@ -15,31 +14,45 @@ import java.util.logging.Logger;
  */
 public class Producer implements Runnable {
 
-	private List<Integer> criticalZone;
-	// private Semaphore mutex;
+	private ArrayList<Integer> criticalZone;
+	private Semaphore semFree;
+	private Semaphore semFull;
 
-	Producer(List<Integer> criticalZone/* , Semaphore mutex */) {
+	Producer(ArrayList<Integer> criticalZone, Semaphore semFree, Semaphore semFull) {
 		this.criticalZone = criticalZone;
-		// this.mutex = mutex;
+		this.semFree = semFree;
+		this.semFull = semFull;
 	}
 
 	@Override
 	public void run() {
 		while (true) {
-			int producedElement = 1;
-			addElement(producedElement);
-			System.out.println("Produced element");
+			int producedElement = produce();
 			try {
-				Thread.sleep(100);
-			} catch (InterruptedException ex) {
-				Logger.getLogger(Producer.class.getName()).log(Level.SEVERE, null, ex);
+				semFree.acquire();
+				addElement(producedElement);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			} finally {
+				semFull.release();
 			}
 		}
 
 	}
 
+	private int produce() {
+		try {
+			Thread.sleep(100);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		System.out.println("Produced element");
+		return 1;
+	}
+
 	private synchronized void addElement(Integer element) {
-		this.criticalZone.add(1);
+		this.criticalZone.add(element);
+		System.out.println("Added element");
 	}
 
 }
