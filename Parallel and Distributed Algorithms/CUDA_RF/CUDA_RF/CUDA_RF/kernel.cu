@@ -33,11 +33,11 @@ int main()
 
   int* d_D;
   cudaMalloc((void**)&d_D, N * sizeof(int));
-  cudaMemCpy(&d_D, &D, N * sizeof(int), cudaMemcpyHostToDevice);
+  cudaMemcpy(&d_D, &D, N * sizeof(int), cudaMemcpyHostToDevice);
 
   for (k = 1; k <= N; ++k)
   {
-    MatAdd<<<numBlocks, threadsPerBlock >>>(d_D, k);
+    CalcDist<<<numBlocks, threadsPerBlock >>>(d_D, k);
   }
-  cudaMemCpy(&D, &d_D, N * sizeof(int), cudaMemcpyDeviceToHost);
+  cudaMemcpy(&D, &d_D, N * sizeof(int), cudaMemcpyDeviceToHost);
 }
