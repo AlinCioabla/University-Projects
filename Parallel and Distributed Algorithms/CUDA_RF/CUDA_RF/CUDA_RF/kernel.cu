@@ -6,9 +6,9 @@
 using namespace std;
 
 #define N 25
-#define D(row,column) D[row*5 + column]
+#define D(row,column) matrix[row*5 + column]
 
-int D[N] = {
+int matrix[N] = {
   0,3,9,8,3,
   5,0,1,4,2,
   6,6,0,4,5,
@@ -16,7 +16,7 @@ int D[N] = {
   7,9,3,2,0,
 };
 
-__global__ void CalcDist(int* D, int k)
+__global__ void RoyFloyd(int* D, int k)
 {
   int i = threadIdx.x;
   int j = threadIdx.y;
@@ -33,11 +33,11 @@ int main()
 
   int* d_D;
   cudaMalloc((void**)&d_D, N * sizeof(int));
-  cudaMemcpy(&d_D, &D, N * sizeof(int), cudaMemcpyHostToDevice);
+  cudaMemcpy(&d_D, &matrix, N * sizeof(int), cudaMemcpyHostToDevice);
 
   for (k = 1; k <= N; ++k)
   {
-    CalcDist<<<numBlocks, threadsPerBlock >>>(d_D, k);
+    RoyFloyd<<<numBlocks, threadsPerBlock>>>(d_D, k);
   }
-  cudaMemcpy(&D, &d_D, N * sizeof(int), cudaMemcpyDeviceToHost);
+  cudaMemcpy(&matrix, &d_D, N * sizeof(int), cudaMemcpyDeviceToHost);
 }
