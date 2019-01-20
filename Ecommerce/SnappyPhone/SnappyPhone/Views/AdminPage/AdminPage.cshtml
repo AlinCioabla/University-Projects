@@ -1,0 +1,110 @@
+﻿@{
+  ViewBag.Title = "Admin page";
+}
+
+<h4>Users</h4>
+<div class="container">
+  <table class="table">
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Username</th>
+      <th scope="col">Firstname</th>
+      <th scope="col">Lastname</th>
+      <th scope="col">Role</th>
+      <th scope="col">Actions</th>
+    </tr>
+    @foreach (var user in ViewBag.Users as List<StoreUser>)
+    {
+      <tr>
+        <td>@user.Id</td>
+        <td>@user.UserName</td>
+        <td>@user.FirstName</td>
+        <td>@user.LastName</td>
+        <td>null</td>
+
+        <td>
+          <div>
+            <button class="btn btn-primary"  onclick="location.href = '@Url.Action("RemoveUser","Account", new { userId = user.Id })'">Remove</button>
+            <button class="btn btn-secondary">Edit</button>
+          </div>
+        </td>
+      </tr>
+    }
+  </table>
+</div>
+
+<h4>Products</h4>
+<div class="container">
+  <table class="table">
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Category</th>
+      <th scope="col">Subcategory</th>
+      <th scope="col">Color</th>
+      <th scope="col">Price</th>
+      <th scope="col">Actions</th>
+    </tr>
+    @foreach (var product in ViewBag.Products as List<Product>)
+    {
+      <tr>
+        <td>@product.Id</td>
+        <td>@product.Name</td>
+        <td>@product.Category</td>
+        <td>@product.Subcategory</td>
+        <td>@product.Color</td>
+        <td>@product.Price</td>
+
+        <td>
+          <div>
+            <button class="btn btn-primary" onclick="location.href = '@Url.Action("RemoveProduct", "Products", new { productId = product.Id })'">Remove</button>
+            <button class="btn btn-secondary" onclick="location.href = '@Url.Action("AddModifyProduct", "Products", new { productId = product.Id })'">Edit</button>
+          </div>
+        </td>
+      </tr>
+    }
+  </table>
+  <button class="btn btn-secondary mb-3" onclick="location.href = '@Url.Action("AddModifyProduct", "Products", new { productId = -1 })'">Add product</button>
+</div>
+
+<h4>Orders</h4>
+<div class="container">
+  <table class="table">
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">User</th>
+      <th scope="col">OrderDate</th>
+      <th scope="col">OrderNumber</th>
+      <th scope="col">Items</th>
+      <th scope="col">Total</th>
+      <th scope="col">Actions</th>
+    </tr>
+    @foreach (var order in ViewBag.Orders as List<Order>)
+    {
+      <tr>
+        <td>@order.Id</td>
+        <td>@order.User</td>
+        <td>@order.OrderDate</td>
+        <td>@order.OrderNumber</td>
+        <td>
+          @{
+            decimal orderTotal = 0;
+          }
+          @foreach (var item in order.Items)
+          {
+            <p>@item.Product.Name x @item.Quantity - @item.UnitPrice</p>
+            orderTotal += item.UnitPrice * (decimal)item.Quantity;
+          }
+        </td>
+        <td>@orderTotal</td>
+
+        <td>
+          <div>
+            <button class="btn btn-primary">Remove</button>
+            <button class="btn btn-secondary">Edit</button>
+          </div>
+        </td>
+      </tr>
+    }
+  </table>
+</div>

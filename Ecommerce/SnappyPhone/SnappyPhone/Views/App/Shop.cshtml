@@ -1,0 +1,92 @@
+﻿@model ShopViewModel
+<h1>Shop</h1>
+
+<div class="container">
+  <form class="form-inline m-3 justify-content-center" method="get" asp-controller="App" asp-action="Shop">
+    <div class="form-group mr-3">
+      <label asp-for="@Model.SearchString" class="mr-2">Search: </label>
+      <input asp-for="@Model.SearchString" name="SearchString" type="text" class="form-control">
+    </div>
+    <div class="form-group mr-3">
+      <label asp-for="@Model.Filter" class="mr-2">Filter: </label>
+      <select asp-for="@Model.Filter" name="Filter" class="form-control" asp-items="@Model.Filters">
+        <option value="">None</option>
+      </select>
+    </div>
+    <div class="form-group mr-3">
+      <label asp-for="@Model.SortBy" class="mr-2">Sort by: </label>
+      <select asp-for="@Model.SortBy" name="SortBy" class="form-control">
+        <option value="">None</option>
+        <option value="Price">Price</option>
+        <option value="Name">Name</option>
+        <option value="Category">Category</option>
+        <option value="Subcategory">Subcategory</option>
+      </select>
+    </div>
+    <div class="form-check mr-3">
+      <input asp-for="@Model.Ascending" type="checkbox" name="Ascending" class="form-check-input">
+      <label class="form-check-label" asp-for="@Model.Ascending">Ascending</label>
+    </div>
+    <div class="form-group mr-3">
+      <button type="submit" class="btn btn-primary" id="searchButton">Search</button>
+    </div>
+  </form>
+</div>
+
+<div class="container">
+  <div class="row is-flex">
+    <div class="col-md-2">
+      <h4>Filters</h4>
+      <div class="container">
+        <div class="row">
+          <p>By category</p>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <p>By subcategory</p>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <p>By color</p>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <p>By price</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-10">
+      <div class="container">
+        <div class="row">
+          @foreach (var product in Model.Products)
+          {
+            <div class="col-md-3">
+              <div class="border bg-light rounded p-1">
+                @if (!string.IsNullOrEmpty(product.PictureId))
+                {
+                  <img src="~/img/@(product.PictureId).jpg" class="img-fluid rounded" alt="@product.Name"/>
+                }
+                else
+                {
+                  <img src="~/img/no-preview-available.jpg" class="img-fluid rounded" alt="@product.Name"/>
+                }
+                <h3>@product.Name</h3>
+                <ul class="product-props">
+                  <li>Category: @product.Category</li>
+                  <li>Subcategory: @product.Subcategory</li>
+                  <li>Price: @product.Price</li>
+                </ul>
+                <button id="buyButton" class="btn btn-success" onclick="location.href = '@Url.Action("AddToCart", "ShoppingCart", new {productId = product.Id})'">Buy</button>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+      
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,17 @@
+﻿{
+  "ConnectionStrings": {
+    "SnappyConnectionString": "server=(localdb)\\ProjectsV13;Database=SnappyPhoneDb;Integrated Security=true;MultipleActiveResultSets=true"
+  },
+
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning"
+    }
+  },
+  "Tokens": {
+    "Key": "AlinBoss1231111111111111111",
+    "Issuer": "localhost",
+    "Audience":  "users" 
+  }
+}

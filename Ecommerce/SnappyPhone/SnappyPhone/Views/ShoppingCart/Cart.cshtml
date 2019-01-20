@@ -1,0 +1,38 @@
+﻿<h1>Cart</h1>
+<div class="container">
+  <table class="table">
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Title</th>
+      <th scope="col">Price</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Total Price</th>
+      <th scope="col">Actions</th>
+    </tr>
+    @foreach (var shoppingCartItem in ViewBag.cart)
+    {
+      <tr>
+        <td>@shoppingCartItem.Product.Id</td>
+        <td>@shoppingCartItem.Product.Name</td>
+        <td>@shoppingCartItem.Product.Price</td>
+        <td>@shoppingCartItem.Quantity</td>
+        <td>@(shoppingCartItem.Quantity * shoppingCartItem.Product.Price)</td>
+        <td>
+          <div>
+            <button class="btn btn-primary" onclick="location.href='@Url.Action("Remove", "ShoppingCart", new { productId = shoppingCartItem.Product.Id })'">Remove</button>
+          </div>
+        </td>
+      </tr>
+    }
+  </table>
+  <div class="row">
+    <div class="col-md-3 offset-md-9">
+      <p><strong>Total price: @ViewBag.total</strong></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3 offset-md-9">
+      <button class="btn btn-success" onclick="location.href='@Url.Action("SendOrder", "ShoppingCart")'">Checkout</button>
+    </div>
+  </div>
+</div>

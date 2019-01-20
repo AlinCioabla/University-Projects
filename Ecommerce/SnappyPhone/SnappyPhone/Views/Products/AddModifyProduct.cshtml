@@ -1,0 +1,76 @@
+﻿@model Product
+
+@{
+  ViewBag.Title = "Add/Modify product";
+}
+
+<div class="container">
+  <div class="row background-color: grey;">
+    <div class="col-md-4 offset-md-1 border bg-light p-1">
+      @if (!string.IsNullOrEmpty(Model.PictureId))
+      {
+        <img id="imagePreview" src="~/img/@(Model.PictureId).jpg" class="img-fluid rounded" alt="@Model.Name"/>
+      }
+      else
+      {
+        <img id="imagePreview" src="~/img/no-preview-available.jpg" class="img-fluid rounded" alt="@Model.Name"/>
+      }
+      <span class="btn btn-default btn-file">
+        <input type="file" id="imageInput">
+      </span>
+    </div>
+    <div class="col-md-6">
+      <div class="card card-body bg-light">
+        <form method="post" asp-action="FinishProduct" asp-controller="Products">
+          <span asp-validation-summary="ModelOnly"></span>
+          <div class="form-group">
+            <label asp-for="Id">Product Id:</label>
+            <input type="number" asp-for="Id" class="form-control" readonly/>
+            <span asp-validation-for="Id" class="text-warning"></span>
+          </div>
+          <div class="form-group">
+            <label asp-for="PictureId">Product Picture Id:</label>
+            <input id="pictureIdInput" asp-for="PictureId" class="form-control" readonly/>
+            <span asp-validation-for="PictureId" class="text-warning"></span>
+          </div>
+          <div class="form-group">
+            <label asp-for="Name">Product Name:</label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-warning"></span>
+          </div>
+          <div class="form-group">
+            <label asp-for="Category">Category:</label>
+            <input type="text" class="form-control" asp-for="Category" />
+            <span asp-validation-for="Category" class="text-danger"></span>
+          </div>
+          <div class="form-group">
+            <label asp-for="Subcategory">Subcategory:</label>
+            <input type="text" class="form-control" asp-for="Subcategory" />
+            <span asp-validation-for="Subcategory" class="text-danger"></span>
+          </div>
+          <div class="form-group">
+            <label asp-for="Color">Color:</label>
+            <input type="text" class="form-control" asp-for="Color" />
+            <span asp-validation-for="Color" class="text-danger"></span>
+          </div>
+          <div class="form-group">
+            <label asp-for="Description">Description:</label>
+            <textarea rows="4" class="form-control" asp-for="Description"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+          </div>
+          <div class="form-group">
+            <label asp-for="Price">Price:</label>
+            <input type="number" class="form-control" asp-for="Price" />
+            <span asp-validation-for="Price" class="text-danger"></span>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-sm">
+              <i class="fa fa-envelope"></i> Apply
+            </button>
+            <span class="text-success">@ViewBag.UserMessage</span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

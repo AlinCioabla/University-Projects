@@ -1,0 +1,72 @@
+[
+  {
+    "Id": 0,
+    "Name": "iPhone XR Clear Case",
+    "Category": "iPhone Cover",
+    "Subcategory": "iPhone XR" ,
+    "Color": "Transparent",
+    "Price": 39,
+    "Description": "Thin, light, and easy to grip — this case lets you enjoy the look of iPhone XR while providing extra protection. It’s also crafted with a blend of optically clear polycarbonate and flexible TPU materials, so the case fits right over the buttons for easy use. On the surface, a scratch-resistant coating has been applied not only to the exterior, but also to the interior. Need to wirelessly charge? Just leave the case on your iPhone and set it on your Qi-certified charger.",
+    "PictureId": "iPhone_XR_Clear_Case"
+  },
+  {
+    "Id": 0,
+    "Name": "iPhone XS Max Silicone Case - Hibiscus",
+    "Category": "iPhone Cover",
+    "Subcategory": "iPhone XS",
+    "Color": "Hibiscus",
+    "Price": 40,
+    "Description": "Designed by Apple to complement iPhone XS Max, the form of the silicone case fits snugly over the volume buttons, side button, and curves of your device without adding bulk. A soft microfiber lining on the inside helps protect your iPhone. On the outside, the silky, soft-touch finish of the silicone exterior feels great in your hand. And you can keep it on all the time, even when you’re charging wirelessly.",
+    "PictureId": "iPhone_XS_Max_Silicone_Case_Hibiscus"
+  },
+  {
+    "Id": 0,
+    "Name": "iPhone 7 Smart Battery Case - White",
+    "Category": "iPhone Cover",
+    "Subcategory": "iPhone 7",
+    "Color": "White",
+    "Price": 99,
+    "Description": "Engineered exclusively for iPhone 7, the Smart Battery Case gives you even longer battery life while offering great protection. Inside, a soft microfiber lining helps protect your iPhone. And on the outside, the silky, soft-touch finish of the silicone exterior feels great in your hand. A soft elastomer hinge design makes it easy to put the case on and take it off.Charge your iPhone and battery case simultaneously for increased talk time up to 26 hours, Internet use up to 22 hours on LTE, and even longer audio and video playback.* With the Smart Battery Case on, the intelligent battery status is displayed on the iPhone Lock screen and in Notification Center, so you know exactly how much charge you have left.",
+    "PictureId": "iPhone_XS_Max_Silicone_Case_Hibiscus"
+  }, 
+  {
+    "Id": 0,
+    "Name": "Galaxy J4 Dual Layer Cover (Black)",
+    "Category": "Samsung Cover",
+    "Subcategory": "Samsung Galaxy J4",
+    "Color": "Black",
+    "Price": 25,
+    "Description": "Safeguards without getting in the way. Galaxy J4 Dual Layer cover is designed to deliver powerful protection. Its tough outer shell defends against dings while its softer TPU provides excellent shock absorption for added peace of mind.",
+    "PictureId": "Galaxy_J4_Dual_Layer_Cover_Black"
+  }, 
+  {
+    "Id": 0,
+    "Name": "Galaxy S9 Hyperknit Cover (Gray)",
+    "Category": "Samsung Cover",
+    "Subcategory": "Samsung Galaxy S9",
+    "Color": "Gray",
+    "Price": 35,
+    "Description": "Snap on the athletic vibe of the Hyperknit Cover. It†s made from a lightweight woven material found on sportswear, which protects your Galaxy S9 without adding bulk.",
+    "PictureId": "Galaxy_S9_Hyperknit_Cover_Gray"
+  },
+  {
+    "Id": 0,
+    "Name": "Galaxy S9+ Clear View Standing Cover (Black)",
+    "Category": "Samsung Cover",
+    "Subcategory": "Samsung Galaxy S9Plus",
+    "Color": "Black",
+    "Price": 31,
+    "Description": "Comfortably enjoy the full view of the Infinity Display with your Galaxy S9+ in the Clear View Standing Cover. If you want to go hands-free during a movie, simply fold the cover back to prop up your phone into an optimized landscape viewing angle.",
+    "PictureId": "Galaxy_S9Plus_Clear_View_Standing_Cover_Black"
+  },
+  {
+    "Id": 0,
+    "Name": "Galaxy S9 Protective Standing Cover (Black)",
+    "Category": "Samsung Cover",
+    "Subcategory": "Samsung Galaxy S9",
+    "Color": "Black",
+    "Price": 30,
+    "Description": "Rest assured that your new Galaxy S9 is fully defended against drops and falls. The Protective Standing Cover has been drop-tested and earned a military-grade rating.",
+    "PictureId": "Galaxy_S9_Protective_Standing_Cover_Black"
+  }
+]
